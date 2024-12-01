@@ -22,12 +22,18 @@ app.get('/login', function(request, response) {
 
 app.post('/validatelogin', function(request, response) {
     console.log(request.body)
+    response.redirect('/success')
+})
+
+app.get('/success', function(request, response) {
+    response.send('Success!')
 })
 
 app.get('/', function(request, response) {
     response.send('Hello World!')
 })
 
-app.listen(port, () => {
-    console.log("First app running on port ${port}!")
+app.listen(port, function(error) {
+    if (error) console.log(error)
+    console.log('First app running on port ' + port + '!')
 })
